@@ -9,13 +9,10 @@
     "seed-data": "keystone-next --seed-data"
   },
   "eslintConfig": {
-    "extends": "wesbos/typescript",
+    "extends": "wesbos/typescript.js",
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0,
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error"
-      ]
+      "no-unused-vars": "off"
     }
   },
   "babel": {
