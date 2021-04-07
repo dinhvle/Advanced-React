@@ -15,8 +15,27 @@ const generatedPermissions = Object.fromEntries(
   ])
 );
 
+// Permissions check if someone meets a criteria
 export const permissions = {
-  canManageProducts({ session }) {
-    return session?.data.role?.canManageProducts;
+  ...generatedPermissions,
+};
+
+// Rule based function
+// Rules can be return a boolean or a filter
+export const rules = {
+  canManageProducts({ session }: ListAccessArgs) {
+    // 1. Do they have the permission of canManageProducts
+    if (permissions.canManageProducts({ session })) {
+      return true;
+    }
+    // 2. If not, do they own this item?
+    return { user: { id: session.itemId } };
+  },
+  canReadProducts({ session }: ListAccessArgs) {
+    if (permissions.canManageProducts({ session })) {
+      return true; // If they can manage they can read
+    }
+    // They should only see available products (based on the status field)
+    return { status: 'AVAILABLE' };
   },
 };
