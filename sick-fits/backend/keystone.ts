@@ -47,6 +47,7 @@ export default withAuth(
         origin: [process.env.FRONTEND_URL],
         credentials: true,
       },
+      port: Number(process.env.PORT) || 3000,
     },
     db: {
       adapter: 'mongoose',
