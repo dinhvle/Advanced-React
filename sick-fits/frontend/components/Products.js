@@ -35,13 +35,13 @@ export default function Products({ page }) {
       first: perPage,
     },
   });
-  if (loading) return <p>Please wait and refresh</p>;
+  if (loading) return <p>Please wait a bit and refresh</p>;
   if (error) return <DisplayError error={error} />;
 
   return (
     <div>
       <ProductsListStyles>
-        {data.allProducts.map((product) => (
+        {data?.allProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </ProductsListStyles>
