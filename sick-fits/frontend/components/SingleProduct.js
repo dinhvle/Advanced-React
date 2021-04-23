@@ -51,7 +51,7 @@ export default function SingleProduct({ id }) {
   return (
     <ProductStyles>
       <Head>
-        <title>Sick Fits | {Product.name}</title>
+        <title>Fruits | {Product.name}</title>
       </Head>
       <img
         src={Product.photo.image.publicUrlTransformed}

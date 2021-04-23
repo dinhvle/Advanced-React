@@ -24,7 +24,7 @@ export default function Pagination({ page }) {
     <PaginationStyles>
       <Head>
         <title>
-          Sick Fits - Page {page} of {pageCount}
+          Fruits - Page {page} of {pageCount}
         </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
