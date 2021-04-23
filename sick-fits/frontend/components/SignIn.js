@@ -4,6 +4,9 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { CURRENT_USER_QUERY } from './User';
 import DisplayError from './ErrorMessage';
+import { useRouter } from 'next/router';
+import { useUser } from './User';
+import { useEffect } from 'react';
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -24,6 +27,13 @@ const SIGNIN_MUTATION = gql`
 `;
 
 export default function SignIn() {
+  const user = useUser();
+  const router = useRouter();
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  });
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
     password: '',
